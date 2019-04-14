@@ -1,4 +1,4 @@
-package com.yuval.reiss.ourstory.MyTasks;
+package com.yuval.reiss.ourstory.Charity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.yuval.reiss.ourstory.CreateTaskActivity;
 import com.yuval.reiss.ourstory.Objects.CharityObject;
 import com.yuval.reiss.ourstory.R;
 
@@ -25,7 +26,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class AddTaskActivity extends AppCompatActivity {
+public class CharityActivity extends AppCompatActivity {
 
 
     private RecyclerView mRecyclerView;
@@ -51,7 +52,7 @@ public class AddTaskActivity extends AppCompatActivity {
         mAdapter = new CharityRCAdapter(charityArrayList, getApplicationContext(), new CharityRCAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent intent = new Intent(AddTaskActivity.this, CreateTaskActivity.class);
+                Intent intent = new Intent(CharityActivity.this, CreateTaskActivity.class);
                 intent.putExtra("name", charityArrayList.get(position).getName());
                 intent.putExtra("description", charityArrayList.get(position).getDescription());
                 intent.putExtra("thumbImage", charityArrayList.get(position).getThumbImageURL());
@@ -76,7 +77,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
     public class AsyncTask extends android.os.AsyncTask<Void, Void, Void> {
 
-        ProgressDialog progressDialog = new ProgressDialog(AddTaskActivity.this);
+        ProgressDialog progressDialog = new ProgressDialog(CharityActivity.this);
 
         @Override
         protected void onPreExecute() {
@@ -89,7 +90,7 @@ public class AddTaskActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void ...params) {
 
-            String url = "https://api.donorschoose.org/common/json_feed.html?APIKey=DONORSCHOOSE";
+            String url = "https://api.donorschoose.org/common/json_feed.html?state=MD&APIKey=DONORSCHOOSE";
             StringRequest req = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -118,7 +119,7 @@ public class AddTaskActivity extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(AddTaskActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CharityActivity.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 

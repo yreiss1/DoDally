@@ -1,4 +1,4 @@
-package com.yuval.reiss.ourstory.MyTasks;
+package com.yuval.reiss.ourstory.Tasks;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,23 +14,25 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.onesignal.OneSignal;
+import com.yuval.reiss.ourstory.Charity.CharityActivity;
+import com.yuval.reiss.ourstory.LoginActivity;
 import com.yuval.reiss.ourstory.MainActivity;
 import com.yuval.reiss.ourstory.Objects.TaskObject;
 import com.yuval.reiss.ourstory.R;
-import com.yuval.reiss.ourstory.TaskRCAdapter;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MyTasksFragment extends Fragment {
+public class TasksFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private TaskRCAdapter mAdapter;
@@ -39,8 +41,8 @@ public class MyTasksFragment extends Fragment {
     SwipeRefreshLayout mSwipeRefreshLayout;
 
 
-    public static MyTasksFragment newInstance() {
-        return new MyTasksFragment();
+    public static TasksFragment newInstance() {
+        return new TasksFragment();
     }
     @Nullable
     @Override
@@ -63,9 +65,22 @@ public class MyTasksFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), AddTaskActivity.class);
+                Intent intent = new Intent(getContext(), CharityActivity.class);
                 startActivity(intent);
                 return;
+            }
+        });
+
+        fab.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                OneSignal.setSubscription(false);
+                Toast.makeText(getContext(), "See you later!", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                return true;
             }
         });
 
@@ -116,7 +131,7 @@ public class MyTasksFragment extends Fragment {
     public void showTasks() {
 
         Query query = FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getUid()).child("tasks");
-        query.orderByChild("time").addValueEventListener(new ValueEventListener() {
+        query.orderByChild("time").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

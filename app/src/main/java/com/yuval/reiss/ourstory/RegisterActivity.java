@@ -24,14 +24,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
-
-    private ImageView mStoryImageView;
     private EditText mUsernameEditText;
     private EditText mEmailEditText;
     private EditText mPasswordEditText;
     private Button mRegisterButton;
     private TextView mLoginLink;
-    private Uri imageFilePath;
 
 
     private FirebaseAuth mFirebaseAuth;
@@ -42,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mStoryImageView = findViewById(R.id.story_imageview);
+
         mUsernameEditText = findViewById(R.id.register_username_edittext);
         mEmailEditText = findViewById(R.id.register_email_edittext);
         mPasswordEditText = findViewById(R.id.register_password_edittext);
@@ -52,11 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
 
-        mStoryImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
                             mUserDB.updateChildren(user);
 
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
 
 

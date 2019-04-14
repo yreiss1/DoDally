@@ -52,7 +52,7 @@ public class UserRCAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
                 String message = UserInformation.getUsername() + " has cheered you on! You can do it!";
                 new SendNotification(message, "You got this!", user.getNotify_id(), context);
-                Toast.makeText(context, "You've cheered on " + user.getUsername(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "You've cheered on " + user.getUsername() + "!",Toast.LENGTH_SHORT).show();
             }
         });
     }

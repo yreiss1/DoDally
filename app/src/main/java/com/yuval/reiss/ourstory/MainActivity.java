@@ -27,7 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.onesignal.OneSignal;
-import com.yuval.reiss.ourstory.MyTasks.MyTasksFragment;
+import com.yuval.reiss.ourstory.Tasks.TasksFragment;
 import com.yuval.reiss.ourstory.Objects.UserObject;
 import com.yuval.reiss.ourstory.Users.UserFragment;
 import com.yuval.reiss.ourstory.Utils.UserInformation;
@@ -40,10 +40,9 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FragmentPagerAdapter mFragmentPagerAdapter;
 
-    private String EVENT_DATE_TIME = "2019-12-31 10:30:00";
     private String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private LinearLayout linear_layout_1, linear_layout_2;
-    private TextView tv_days, tv_hour, tv_minute, tv_second;
+    private TextView tv_days, tv_hour, tv_minute;
     private Handler handler = new Handler();
     private Runnable runnable;
 
@@ -127,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                         tv_minute.setText(String.format("%02d", Minutes));
 
                     } else {
+
                         linear_layout_1.setVisibility(View.VISIBLE);
                         linear_layout_2.setVisibility(View.GONE);
                         handler.removeCallbacks(runnable);
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 UserInformation.setUsername(userObject.getUsername());
                 UserInformation.setNotify(userObject.getNotify_id());
 
-                mUsernameTextView.setText("Hey " + userObject.getUsername() +",");
+                mUsernameTextView.setText("Hey " + userObject.getUsername() +" \uD83D\uDC4B");
 
 
                 progressDialog.dismiss();
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int i) {
             switch (i){
                 case 0:
-                    return MyTasksFragment.newInstance();
+                    return TasksFragment.newInstance();
                 case 1:
                     return UserFragment.newInstance();
 

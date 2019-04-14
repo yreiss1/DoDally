@@ -1,4 +1,4 @@
-package com.yuval.reiss.ourstory.MyTasks;
+package com.yuval.reiss.ourstory.Charity;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,8 +8,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yuval.reiss.ourstory.R;
-
-import org.w3c.dom.Text;
 
 public class CharityViewHolder extends RecyclerView.ViewHolder {
 

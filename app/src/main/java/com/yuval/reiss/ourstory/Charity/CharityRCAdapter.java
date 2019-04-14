@@ -1,4 +1,4 @@
-package com.yuval.reiss.ourstory.MyTasks;
+package com.yuval.reiss.ourstory.Charity;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.yuval.reiss.ourstory.Charity.CharityViewHolder;
 import com.yuval.reiss.ourstory.Objects.CharityObject;
 import com.yuval.reiss.ourstory.R;
 

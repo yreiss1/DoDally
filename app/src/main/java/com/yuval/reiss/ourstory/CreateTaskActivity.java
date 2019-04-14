@@ -1,22 +1,17 @@
-package com.yuval.reiss.ourstory.MyTasks;
+package com.yuval.reiss.ourstory;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -25,14 +20,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.yuval.reiss.ourstory.Objects.TaskObject;
-import com.yuval.reiss.ourstory.R;
 
 import java.lang.ref.WeakReference;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.text.NumberFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -82,7 +73,7 @@ public class CreateTaskActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final Calendar cldr = Calendar.getInstance();
                 int day = cldr.get(Calendar.DAY_OF_MONTH);
-                int month = cldr.get(Calendar.MONTH);
+                final int month = cldr.get(Calendar.MONTH);
                 int year = cldr.get(Calendar.YEAR);
                 // date picker dialog
                 mCreateDatePickerDialog = new DatePickerDialog(CreateTaskActivity.this,
@@ -90,16 +81,11 @@ public class CreateTaskActivity extends AppCompatActivity {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 mCreateTimeEditText.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-                                Date date = null;
-                                try {
-                                    date = dateFormat.parse(mCreateTimeEditText.getText().toString());
-                                } catch (ParseException e) {
-                                    e.printStackTrace();
-                                }
-                                Timestamp timestamp = new Timestamp(date.getTime());
+                                Calendar calendar= Calendar.getInstance();
+                                calendar.set(year, monthOfYear,dayOfMonth);
+                                Date date = calendar.getTime();
+                                time = date.getTime();
 
-                                time = timestamp.getTime();
 
                             }
                         }, year, month, day);

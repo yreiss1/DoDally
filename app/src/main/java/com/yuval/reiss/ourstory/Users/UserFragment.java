@@ -75,7 +75,7 @@ public class UserFragment extends Fragment {
         progressDialog.show();
 
         Query query = FirebaseDatabase.getInstance().getReference().child("users");
-        query.addValueEventListener(new ValueEventListener() {
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot data : dataSnapshot.getChildren()) {

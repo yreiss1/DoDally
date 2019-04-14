@@ -5,14 +5,14 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         app:civ_border_color="#A9A9A9"
         app:civ_border_width="1dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,19 +24,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/user_imageview">
 
         <TextView
             android:id="@+id/username_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_black"
+            android:textColor="#404040"
             android:textSize="16sp"
+            android:letterSpacing="0.04"
+            android:lineSpacingExtra="4sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/user_email_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_italic"
+            android:textSize="16sp"
+            android:textColor="#404040"
+            android:letterSpacing="0.04"
+            android:lineSpacingExtra="4sp"
             android:layout_below="@+id/username_textview" />
     </LinearLayout>
 
@@ -45,6 +55,7 @@
         android:layout_height="wrap_content"
         android:text="Cheer!"
         android:id="@+id/user_cheer_button"
+        android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"/>
 

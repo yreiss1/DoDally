@@ -1,4 +1,4 @@
-package com.yuval.reiss.ourstory.MyTasks;
+package com.yuval.reiss.ourstory.Utils;
 
 public interface ItemTouchHelperAdapter {
 
