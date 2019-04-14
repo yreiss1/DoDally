@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "515670814401",
+    "firebase_url": "https://ourstory-ab938.firebaseio.com",
+    "project_id": "ourstory-ab938",
+    "storage_bucket": "ourstory-ab938.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515670814401:android:b15d46e14b28f5f1",
+        "android_client_info": {
+          "package_name": "com.yuval.reiss.ourstory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515670814401-596h2pl9vf3gpi2dnmjr4bvci8079euj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yuval.reiss.ourstory",
+            "certificate_hash": "b9d3153e1231514971a557726b769d7dafde58ce"
+          }
+        },
+        {
+          "client_id": "515670814401-2qf3hsq4j0tiu40c7gkk1aefcadv53tn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvGz5yiX6fYrpqmb5A9vS2_ffq4FrcMcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515670814401-2qf3hsq4j0tiu40c7gkk1aefcadv53tn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
