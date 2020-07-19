@@ -8,8 +8,6 @@ Won Google's First Place at Bitcamp 2019 Hackathon! https://devpost.com/software
 * [General info](#general-info)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
-* [Setup](#setup)
-* [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
 
